@@ -1,10 +1,14 @@
 import "../styles/globals.css";
-import { LivepeerConfig } from "@livepeer/react";
-import LivePeerClient from "../livepeer";
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from "@livepeer/react";
+import livepeerClient from "../livepeer";
 
 export default function App({ Component, pageProps }) {
   return (
-    <LivepeerConfig client={LivePeerClient}>
+    <LivepeerConfig client={livepeerClient}>
       <Component {...pageProps} />
     </LivepeerConfig>
   );

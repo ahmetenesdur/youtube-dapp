@@ -1,5 +1,5 @@
-import ContractAbi from "../artifacts/contracts/YouTube.sol/YouTube.json";
 import { ethers } from "ethers";
+import ContractAbi from "../artifacts/contracts/YouTube.sol/YouTube.json";
 import { contractAddress } from "../config";
 
 export default function getContract() {
