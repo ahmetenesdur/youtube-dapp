@@ -7,7 +7,7 @@ import livepeerClient from "../livepeer";
 export default function App({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
-      <LivepeerConfig client={LivePeerClient}>
+      <LivepeerConfig client={livepeerClient}>
         <Component {...pageProps} />
       </LivepeerConfig>
     </ApolloProvider>

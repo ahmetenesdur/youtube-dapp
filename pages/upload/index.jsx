@@ -1,20 +1,11 @@
 import { useState, useRef } from "react";
 import { BiCloud, BiMusic, BiPlus } from "react-icons/bi";
 import { create } from "ipfs-http-client";
-import { getContract } from "../../utils/getContract";
+import getContract from "../../utils/getContract";
 import saveToIPFS from "../../utils/saveToIPFS";
 import { useCreateAsset } from "@livepeer/react";
 
 export default function Upload() {
-  // Livepeer hook for creating an asset
-  const {
-    mutate: createAsset,
-    data: asset,
-    status,
-    progress,
-    error,
-  } = useCreateAsset();
-
   // Creating state for the input field
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -44,6 +35,7 @@ export default function Upload() {
       UploadedDate: Date.now(),
     };
     // Calling the saveVideo function and passing the metadata object
+    console.log(data);
     await saveVideo(data);
   };
 
@@ -55,10 +47,19 @@ export default function Upload() {
     return cid;
   };
 
+  // Livepeer hook for creating an asset
+  const {
+    mutate: createAsset,
+    data: asset,
+    status,
+    progress,
+    error,
+  } = useCreateAsset();
+
   // Function to upload the video to Livepeer
   const uploadVideo = async () => {
     // Calling the createAsset function from the useCreateAsset hook to upload the video
-    createAsset?.({
+    createAsset({
       name: title,
       file: video,
     });
